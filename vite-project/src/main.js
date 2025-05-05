@@ -20,5 +20,15 @@ document.querySelector('#app').innerHTML = `
     </p>
   </div>
 `
+let angle = 0;
+const image = document.getElementById("image");
+
+function rotateImage() {
+  angle = (angle + 1) % 360;
+  image.style.transform = `rotate(${angle}deg)`;
+  requestAnimationFrame(rotateImage);
+}
+
+rotateImage();
 
 setupCounter(document.querySelector('#counter'))
