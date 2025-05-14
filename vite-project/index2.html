@@ -8,62 +8,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div class="sommaire">
-        <a href="index.html">CV</a>
-        <a href="index2.html" class="page actuelle">Calculatrice</a>
-        <a href="index3.html">Quizz</a>
-        <a href="index4.html">Surprise</a>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen flex flex-col items-center">
+    <div class="sommaire mt-6 mb-10 flex gap-4 text-lg text-white font-semibold">
+  <a href="index.html" class="hover:underline">CV</a>
+  <a href="index2.html" class="text-yellow-400 underline">Calculatrice</a>
+  <a href="index3.html" class="hover:underline">Quizz</a>
+  <a href="index4.html" class="hover:underline">Surprise</a>
+</div>
+  <div class="bg-gray-100 rounded-3xl shadow-2xl p-6 w-[320px]">
+    <!-- Écran -->
+    <div id="display" class="bg-white text-right text-3xl font-mono rounded-xl p-4 mb-6 h-20 overflow-hidden shadow-inner">
     </div>
-    <div class="bg-white/80 backdrop-blur-md shadow-2xl rounded-3xl p-10 w-full max-w-md">
-    <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-8">🧮 Calculatrice</h1>
 
-    <div class="space-y-4">
-      <!-- Champs -->
-      <input type="number" id="nb1" placeholder="Nombre 1"
-             class="w-full p-4 rounded-xl border border-gray-300 text-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" />
-      <input type="number" id="nb2" placeholder="Nombre 2"
-             class="w-full p-4 rounded-xl border border-gray-300 text-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" />
-      
-      <!-- Boutons -->
-      <div class="flex justify-between mt-4">
-        <button onclick="calculer('+')"
-                class="flex-1 mx-1 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl transition shadow-md">
-          +
-        </button>
-        <button onclick="calculer('-')"
-                class="flex-1 mx-1 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl transition shadow-md">
-          -
-        </button>
-        <button onclick="calculer('*')"
-                class="flex-1 mx-1 bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 rounded-xl transition shadow-md">
-        </button>
-      </div>
+    <!-- Boutons -->
+    <div class="grid grid-cols-4 gap-4 text-lg font-bold">
+      <button class="btn bg-red-400 hover:bg-red-500" onclick="clearDisplay()">C</button>
+      <button class="btn bg-gray-300" onclick="append('/')">/</button>
+      <button class="btn bg-gray-300" onclick="append('*')">×</button>
+      <button class="btn bg-yellow-400 hover:bg-yellow-500" onclick="backspace()">⌫</button>
 
-      <!-- Résultat -->
-      <p id="result" class="text-center text-2xl font-semibold text-gray-700 mt-6"></p>
+      <button class="btn" onclick="append('7')">7</button>
+      <button class="btn" onclick="append('8')">8</button>
+      <button class="btn" onclick="append('9')">9</button>
+      <button class="btn bg-gray-300" onclick="append('-')">−</button>
+
+      <button class="btn" onclick="append('4')">4</button>
+      <button class="btn" onclick="append('5')">5</button>
+      <button class="btn" onclick="append('6')">6</button>
+      <button class="btn bg-gray-300" onclick="append('+')">+</button>
+
+      <button class="btn" onclick="append('1')">1</button>
+      <button class="btn" onclick="append('2')">2</button>
+      <button class="btn" onclick="append('3')">3</button>
+      <button class="btn row-span-2 bg-blue-500 hover:bg-blue-600 text-white" onclick="calculate()">=</button>
+
+      <button class="btn col-span-2" onclick="append('0')">0</button>
+      <button class="btn" onclick="append('.')">.</button>
     </div>
   </div>
 
   <script>
-    function calculer(operateur) {
-      const nb1 = parseFloat(document.getElementById('nb1').value);
-      const nb2 = parseFloat(document.getElementById('nb2').value);
-      let resultat = '';
+    let display = document.getElementById('display');
 
-      if (isNaN(nb1) || isNaN(nb2)) {
-        resultat = "❌ Entrez deux nombres valides.";
+    function append(char) {
+      if (display.innerText === '0' || display.innerText === 'Erreur') {
+        display.innerText = char;
       } else {
-        switch (operateur) {
-          case '+': resultat = nb1 + nb2; break;
-          case '-': resultat = nb1 - nb2; break;
-          case '*': resultat = nb1 * nb2; break;
-        }
-        resultat = "✅ Résultat : " + resultat;
+        display.innerText += char;
       }
+    }
 
-      document.getElementById('result').textContent = resultat;
+    function clearDisplay() {
+      display.innerText = '0';
+    }
+
+    function backspace() {
+      if (display.innerText.length === 1 || display.innerText === 'Erreur') {
+        display.innerText = '0';
+      } else {
+        display.innerText = display.innerText.slice(0, -1);
+      }
+    }
+
+    function calculate() {
+      try {
+        const result = eval(display.innerText);
+        display.innerText = result;
+      } catch {
+        display.innerText = 'Erreur';
+      }
     }
   </script>
+
+  <style>
+    .btn {
+      @apply p-4 bg-white rounded-xl shadow hover:scale-105 active:scale-95 transition-all;
+    }
+  </style>
 </body>
 </html>
