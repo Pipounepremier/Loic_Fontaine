@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="src/style.css">
     <link rel="stylesheet" href="src/style2.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
@@ -14,35 +15,55 @@
         <a href="index3.html">Quizz</a>
         <a href="index4.html">Surprise</a>
     </div>
-    <div class="calculatrice">
-    <input type="text" id="nb1" placeholder="Nombre 1">
-    <input type="text" id="nb2" placeholder="Nombre 2">
-    <br>
-    <button id="Add" onclick="addition()">+</button>
-    <button id="Sub" onclick="soustraction()">-</button>
-    <button id="Mul" onclick="mult()">*</button>
-    <p id="result"></p>
-</div>
-    <script>
-        function addition(){
-            var int1 = document.getElementById("nb1").value;
-            var int2 = document.getElementById("nb2").value;
-            var result = parseInt(int1) + parseInt(int2);
-            document.getElementById("result").innerHTML = result;
-        }
-        function soustraction(){
-            var int1 = document.getElementById("nb1").value;
-            var int2 = document.getElementById("nb2").value;
-            var result = parseInt(int1) - parseInt(int2);
-            document.getElementById("result").innerHTML = result;
+    <div class="bg-white/80 backdrop-blur-md shadow-2xl rounded-3xl p-10 w-full max-w-md">
+    <h1 class="text-4xl font-extrabold text-center text-gray-800 mb-8">🧮 Calculatrice</h1>
 
+    <div class="space-y-4">
+      <!-- Champs -->
+      <input type="number" id="nb1" placeholder="Nombre 1"
+             class="w-full p-4 rounded-xl border border-gray-300 text-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" />
+      <input type="number" id="nb2" placeholder="Nombre 2"
+             class="w-full p-4 rounded-xl border border-gray-300 text-xl focus:outline-none focus:ring-2 focus:ring-indigo-400 transition" />
+      
+      <!-- Boutons -->
+      <div class="flex justify-between mt-4">
+        <button onclick="calculer('+')"
+                class="flex-1 mx-1 bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 rounded-xl transition shadow-md">
+          +
+        </button>
+        <button onclick="calculer('-')"
+                class="flex-1 mx-1 bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 rounded-xl transition shadow-md">
+          -
+        </button>
+        <button onclick="calculer('*')"
+                class="flex-1 mx-1 bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 rounded-xl transition shadow-md">
+        </button>
+      </div>
+
+      <!-- Résultat -->
+      <p id="result" class="text-center text-2xl font-semibold text-gray-700 mt-6"></p>
+    </div>
+  </div>
+
+  <script>
+    function calculer(operateur) {
+      const nb1 = parseFloat(document.getElementById('nb1').value);
+      const nb2 = parseFloat(document.getElementById('nb2').value);
+      let resultat = '';
+
+      if (isNaN(nb1) || isNaN(nb2)) {
+        resultat = "❌ Entrez deux nombres valides.";
+      } else {
+        switch (operateur) {
+          case '+': resultat = nb1 + nb2; break;
+          case '-': resultat = nb1 - nb2; break;
+          case '*': resultat = nb1 * nb2; break;
         }
-        function mult(){
-            var int1 = document.getElementById("nb1").value;
-            var int2 = document.getElementById("nb2").value;
-            var result = parseInt(int1) * parseInt(int2);
-            document.getElementById("result").innerHTML = result;
-        }
-    </script>
+        resultat = "✅ Résultat : " + resultat;
+      }
+
+      document.getElementById('result').textContent = resultat;
+    }
+  </script>
 </body>
 </html>
