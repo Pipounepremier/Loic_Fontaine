@@ -25,3 +25,9 @@
     background-color: grey;
     color: white;
 }
+
+
+.sommaire a.page.actuelle {
+    background-color:grey;
+    color: white;
+}

@@ -3,20 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="src/style2.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
     <div class="sommaire">
-        <a href="index.html"><h1>CV</h1></a>
-        <a href="index3.html"><h1>Quizz</h1></a>
+        <a href="index.html">CV</a>
+        <a href="index2.html" class="page actuelle">Calculatrice</a>
+        <a href="index3.html">Quizz</a>
+        <a href="index4.html">Surprise</a>
     </div>
-    <input type="text" id="nb1">
-    <input type="text" id="nb2">
+    <div class="calculatrice">
+    <input type="text" id="nb1" placeholder="Nombre 1">
+    <input type="text" id="nb2" placeholder="Nombre 2">
+    <br>
     <button id="Add" onclick="addition()">+</button>
     <button id="Sub" onclick="soustraction()">-</button>
     <button id="Mul" onclick="mult()">*</button>
-    <p id = "result"></p>
+    <p id="result"></p>
+</div>
     <script>
         function addition(){
             var int1 = document.getElementById("nb1").value;
