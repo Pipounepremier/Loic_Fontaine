@@ -10,12 +10,11 @@
 body, html {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: 'Orbitron', sans-serif;
   background-color: black;
   color: white;
 }
-
 #stars {
   position: absolute;
   top: 0;
@@ -49,20 +48,42 @@ body, html {
   font-size: 1.2rem;
   color: #ccc;
 }
-
-#music-btn {
-  margin-top: 1.5rem;
-  padding: 10px 20px;
-  font-size: 1rem;
-  background: #00fff7;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  color: black;
-  font-weight: bold;
-  transition: background 0.3s;
+.gif-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-#music-btn:hover {
-  background: #0ff;
+.gif-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.gif-btn:hover {
+  transform: scale(1.1);
+}
+
+.add-btn {
+  background-color: rgb(2, 255, 242); /* rose */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
+}
+
+.remove-btn {
+  background-color: #3a3a3a; /* rouge */
+  background-image: url('data:image/svg+xml;utf8,<svg fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50%;
 }

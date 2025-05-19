@@ -6,24 +6,65 @@
     <link rel="stylesheet" href="src/surprise.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    .gif {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      pointer-events: none;
+      animation: move 5s linear infinite;
+    }
+
+    @keyframes move {
+      0% {
+        transform: translate(0, 0);
+      }
+      100% {
+        transform: translate(calc(100vw - 100px), calc(100vh - 100px));
+      }
+    }
+  </style>
 </head>
 <body class="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen flex flex-col items-center">
-    <div class="sommaire mt-6 mb-10 flex gap-4 text-lg text-white font-semibold">
-  <a href="index.html" class="hover:underline">CV</a>
-  <a href="index2.html" class="text-yellow-400 underline">Calculatrice</a>
-  <a href="index3.html" class="hover:underline">Contactez moi</a>
-  <a href="index4.html" class="hover:underline">Surprise</a>
-</div>
-    <canvas id="stars"></canvas>
-
-  <div class="center-text">
-    <h1>CACA????</h1>
-    <p>"Qui etes-vous??"</p>
-    <button id="music-btn">🎵 Activer la musique</button>
+  <div class="sommaire mt-6 mb-10 flex gap-4 text-lg text-white font-semibold">
+    <a href="index.html" class="hover:underline">CV</a>
+    <a href="index2.html" class="text-yellow-400 underline">Calculatrice</a>
+    <a href="index3.html" class="hover:underline">Contactez moi</a>
+    <a href="index4.html" class="hover:underline">Surprise</a>
   </div>
 
-  <audio id="bg-music" src="src/music/chill.mp3" loop></audio>
+  <canvas id="stars"></canvas>
 
+  <div class="center-text">
+  <h1>DES GIF???</h1>
+  <p>"Appuie si tu veux des gifs"</p>
+
+  <div class="gif-buttons">
+    <button onclick="addGif()" class="gif-btn add-btn"></button>
+    <button onclick="removeAllGifs()" class="gif-btn remove-btn"></button>
+  </div>
+</div>
+
+  <script>
+    const gifUrl = "src/gif/honkai-star-rail-hsr.gif"; 
+    function addGif() {
+      const gif = document.createElement("img");
+      gif.src = gifUrl;
+      gif.className = "gif";
+
+      const randomX = Math.random() * (window.innerWidth - 100);
+      const randomY = Math.random() * (window.innerHeight - 100);
+
+      gif.style.left = `${randomX}px`;
+      gif.style.top = `${randomY}px`;
+
+      document.body.appendChild(gif);
+    }
+
+    function removeAllGifs() {
+      document.querySelectorAll(".gif").forEach(g => g.remove());
+    }
+  </script>
   <script src="src/surprise.js"></script>
 </body>
 </html>
