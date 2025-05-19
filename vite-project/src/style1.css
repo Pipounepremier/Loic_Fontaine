@@ -1,60 +1,128 @@
 @import "tailwindcss";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color:white;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
 }
 
-.container {
-    width: 800px;
-    margin: 20px auto;
-    background: white;
-    box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+.cv-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 40px auto;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-.header {
-    background-color: rgb(73, 73, 73);
-    color: white;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 24px;
+
+.sidebar {
+  background-color: #1f2d4a;
+  color: white;
+  padding: 20px;
+  width: 30%;
 }
+
+.header h1 {
+  font-size: 24px;
+  color: #50c2f5;
+}
+
+.header p {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.section {
+  margin-top: 30px;
+}
+
+.section h2 {
+  font-size: 16px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  color: #50c2f5;
+}
+
+.section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
 .content {
-    display: flex;
-}
-.annexe {
-    width: 30%;
-    background:rgb(121, 211, 241);
-    padding: 20px;
-}
-.wrapper {
-    width: 70%;
-    padding: 20px;
-    background-color: white;
-}
-h2 {
-    color: #333;
-    border-bottom: 2px solid #333;
-    padding-bottom: 5px;
-}
-.info {
-    margin: 10px 0;
-}
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-ul li {
-    margin: 5px 0;
+  padding: 30px;
+  width: 70%;
 }
 
-span {
-    color:rgb(0, 0, 0)
+.profile, .experience, .education {
+  margin-bottom: 30px;
 }
 
-.logo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
+.profile h2,
+.experience h2,
+.education h2 {
+  font-size: 18px;
+  color: #1f2d4a;
+  margin-bottom: 10px;
+}
+
+.job {
+  margin-bottom: 20px;
+}
+
+.job h3 {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+}
+
+.job ul {
+  margin-top: 5px;
+  padding-left: 20px;
+  list-style-type: circle;
+}
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section,
+.profile,
+.experience,
+.education {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover,
+.profile:hover,
+.experience:hover,
+.education:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Défilement fluide */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
 }
