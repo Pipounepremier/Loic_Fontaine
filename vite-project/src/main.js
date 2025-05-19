@@ -1,7 +1,13 @@
 const display = document.getElementById("display");
 
 function append(char) {
-  if (display.innerText === "0" || display.innerText === "Erreur") {
+  // Ajout avec effet de flash si c'est une opération
+  if (['+', '-', '*', '/'].includes(char)) {
+    display.classList.add("animate-pulse");
+    setTimeout(() => display.classList.remove("animate-pulse"), 200);
+  }
+
+  if (display.innerText === '0' || display.innerText === 'Erreur') {
     display.innerText = char;
   } else {
     display.innerText += char;
@@ -9,23 +15,30 @@ function append(char) {
 }
 
 function clearDisplay() {
-  display.innerText = "0";
+  display.innerText = '0';
+  flashScreen("bg-red-200");
 }
 
 function backspace() {
-  const current = display.innerText;
-  display.innerText = current.length <= 1 ? "0" : current.slice(0, -1);
+  if (display.innerText.length === 1 || display.innerText === 'Erreur') {
+    display.innerText = '0';
+  } else {
+    display.innerText = display.innerText.slice(0, -1);
+  }
 }
 
 function calculate() {
   try {
-    const expression = display.innerText
-      .replace(/÷/g, "/")
-      .replace(/×/g, "*");
-
-    const result = Function(`return (${expression})`)();
-    display.innerText = Number.isFinite(result) ? result : "Erreur";
+    const result = eval(display.innerText);
+    display.innerText = result;
+    flashScreen("bg-green-200");
   } catch {
-    display.innerText = "Erreur";
+    display.innerText = 'Erreur';
+    flashScreen("bg-red-400");
   }
+}
+
+function flashScreen(colorClass) {
+  display.classList.add(colorClass);
+  setTimeout(() => display.classList.remove(colorClass), 300);
 }

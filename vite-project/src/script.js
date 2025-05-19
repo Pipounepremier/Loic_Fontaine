@@ -82,26 +82,20 @@ const quizData = [
   nextBtn.classList.add("hidden");
   scoreEl.textContent = `Votre score : ${score}/${quizData.length}`;
   scoreEl.classList.remove("hidden");
-
-  // Créer le bouton pour afficher le formulaire
   const contactBtn = document.createElement("button");
   contactBtn.textContent = "Contacter";
   contactBtn.className = "mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition";
   contactBtn.onclick = () => {
-    // Afficher le formulaire
     document.getElementById("contact-container").classList.toggle("hidden");
-    // Scroll vers le formulaire pour mieux voir
     document.getElementById("contact-container").scrollIntoView({ behavior: "smooth" });
   };
 
-  // Ajouter le bouton sous le score (éviter doublons)
   if (!document.getElementById("contact-btn")) {
     contactBtn.id = "contact-btn";
     scoreEl.after(contactBtn);
   }
 }
 
-// Gérer l'envoi du formulaire
 document.getElementById("contact-form").addEventListener("submit", function (e) {
   e.preventDefault();
   alert("Message envoyé, merci !");

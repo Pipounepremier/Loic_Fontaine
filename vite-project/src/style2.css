@@ -54,4 +54,57 @@ particles {
   position: relative;
   overflow: hidden;
 }
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px #60a5fa;
+  }
+  50% {
+    box-shadow: 0 0 20px #3b82f6;
+  }
+}
 
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(59, 130, 246, 0.5);
+  pointer-events: none;
+  animation: ripple 0.6s linear;
+}
+
+.flash {
+  animation: pulse-glow 0.6s ease-in-out;
+}
+
+.gif-anime {
+  position: fixed;
+  bottom: 20px;
+  left: -200px; /* commence hors de l'écran */
+  width: 150px;
+  height: auto;
+  z-index: 50;
+  animation: slide-left-right 5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes slide-left-right {
+  0% {
+    transform: translateX(-200px);
+  }
+  50% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-200px);
+  }
+}
