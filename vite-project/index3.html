@@ -17,6 +17,7 @@
 </div>
 <div class="bg-white text-gray-800 w-full max-w-xl rounded-2xl shadow-lg p-8 space-y-6">
     <h1 class="text-3xl font-bold text-center">QUIZZ TAHH LES OUF</h1>
+    <p>Répondez a ce quizz pour pouvoir avoir la chance de me contacter</p>
     <div id="quiz-container" class="space-y-4">
       <div id="question" class="text-xl font-medium"></div>
       <div id="answers" class="grid grid-cols-1 gap-4"></div>
@@ -24,6 +25,15 @@
       <button id="next-btn" class="hidden mt-4 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700">Suivant</button>
 
       <div id="score" class="hidden text-center text-2xl font-semibold"></div>
+
+<div id="quiz-actions" class="hidden flex justify-center gap-4 mt-4">
+  <button id="contact-btn" onclick="window.location.href='index3.html'" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg hidden">
+    Me contacter
+  </button>
+  <button id="retry-btn" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg hidden">
+    Recommencer
+  </button>
+</div>
     </div>
     <div id="contact-container" class="hidden mt-6 bg-gray-100 p-6 rounded-lg shadow-lg">
   <h2 class="text-xl font-semibold mb-4">Formulaire de contact</h2>
