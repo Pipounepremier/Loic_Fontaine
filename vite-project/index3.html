@@ -25,6 +25,15 @@
 
       <div id="score" class="hidden text-center text-2xl font-semibold"></div>
     </div>
+    <div id="contact-container" class="hidden mt-6 bg-gray-100 p-6 rounded-lg shadow-lg">
+  <h2 class="text-xl font-semibold mb-4">Formulaire de contact</h2>
+  <form id="contact-form" class="space-y-4">
+    <input type="text" name="nom" placeholder="Votre nom" required class="w-full p-2 border rounded-md" />
+    <input type="email" name="email" placeholder="Votre email" required class="w-full p-2 border rounded-md" />
+    <textarea name="message" placeholder="Votre message" required class="w-full p-2 border rounded-md h-24"></textarea>
+    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Envoyer</button>
+  </form>
+</div>
     <script src="src/script.js"></script>
 </body>
 </html>
