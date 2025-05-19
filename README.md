@@ -1,89 +1,78 @@
 # Loic_Fontaine
 
-🧠 Projet Front-End Interactif (CV / Calculatrice / Quiz / Surprise)
-📁 Structure du projet
-bash
+# 🧠 Projet Front-End Interactif
+
+## 📁 Structure du projet
+
+.
+├── index.html # CV
+├── index2.html # Calculatrice avancée
+├── index3.html # Quiz + formulaire de contact
+├── index4.html # Surprise (vidéo/fond animé)
+├── src/
+│ ├── style.css
+│ ├── style2.css # Calculatrice
+│ ├── style3.css # Quiz
+│ ├── script.js # Quiz
+│ └── gif/ # GIFs animés
+
+yaml
 Copy
 Edit
-.
-├── index.html         # CV
-├── index2.html        # Calculatrice avancée
-├── index3.html        # Quiz + formulaire de contact (popup)
-├── index4.html        # Surprise (vidéo ou fond animé)
-├── src/
-│   ├── style.css
-│   ├── style2.css     # Calculatrice
-│   ├── style3.css     # Quiz
-│   ├── script.js      # Quiz complet
-│   └── gif/           # GIF animés
-🧾 Pages et Fonctionnalités
-🧑‍💼 index.html – CV interactif
-Menu de navigation en haut.
 
-Fond dégradé avec Tailwind (bg-gradient-to-br from-gray-900 to-gray-800).
+---
 
-Design propre avec des liens interactifs.
+## 🧾 Pages et Fonctionnalités
 
-🔢 index2.html – Calculatrice
-Calculatrice complète, esthétique, et réactive avec Tailwind.
+### 🧑‍💼 `index.html` – CV interactif
 
-Boutons stylisés avec ombres, animations au survol et au clic.
+- Menu de navigation stylisé.
+- Fond dégradé (`bg-gradient-to-br from-gray-900 to-gray-800`).
+- Interface épurée avec navigation vers les autres sections.
 
-Fonctionnalités :
+---
 
-Addition, soustraction, division, multiplication
+### 🔢 `index2.html` – Calculatrice avancée
 
-Clear (C), retour arrière (⌫), point décimal, égal (=)
+- UI moderne avec Tailwind CSS.
+- Options incluses :
+  - Addition, soustraction, multiplication, division
+  - Bouton "C" (clear), retour arrière (⌫), point décimal, égal (=)
+- Animations :
+  - Survol : scale, ombre portée
+  - Click : effet de rebond (`active:scale-95`)
+- Fond animé (étoiles ou particules rapides, sans changer la couleur).
+- **GIF animé** se déplaçant de gauche à droite en bas de l’écran.
 
-Responsive avec layout grid.
+---
 
-Animations avancées : chaque bouton a un effet scale et une transition douce.
+### ❓ `index3.html` – Quiz interactif
 
-🌟 Fond animé avec particules ou étoiles (optionnel).
+- Questions à choix multiples.
+- Correction immédiate avec feedback visuel :
+  - Vert = bonne réponse
+  - Rouge = mauvaise réponse
+- Score final affiché.
+- Bouton "Contacter quelqu’un" après le score :
+  - Ouvre une **popup modal**
+  - Formulaire avec **nom**, **email**, **message**
+  - Design responsive et épuré
 
-GIF animé qui se balade en bas de l’écran (voir plus bas).
+---
 
-❓ index3.html – Quiz + formulaire de contact
-Affiche une série de questions avec réponses multiples.
+### 🎁 `index4.html` – Surprise
 
-Correction visuelle instantanée : réponses justes (vert) et fausses (rouge).
+- Contient :
+  - Vidéo en plein écran OU
+  - Fond animé avec étoiles rapides / particules
+- Effet visuel immersif
+- Aucun contenu cliquable, ambiance visuelle uniquement
 
-Score affiché à la fin du quiz.
+---
 
-Après le score :
+## 🖼️ GIF en bas de l'écran
 
-Bouton "Contacter quelqu’un"
+À intégrer dans toutes les pages si besoin :
 
-➡️ Ouvre une popup modal contenant un formulaire (nom, email, message).
-
-Formulaire centré avec bouton de soumission stylé.
-
-🎁 index4.html – Surprise
-Une vidéo .mp4 ou un GIF en fond d’écran.
-
-Occupe 100% de l’écran sans texte ni interface.
-
-Peut aussi contenir un fond avec des étoiles qui bougent ultra vite ou des particules animées via CSS.
-
-🧪 Technologies utilisées
-Tailwind CSS
-
-HTML5 / CSS3 / JavaScript ES6+
-
-DaisyUI (optionnel)
-
-Aucune dépendance externe requise (tout est natif)
-
-✅ À faire
- Calculatrice stylée avec animations
-
- Quiz avec score final
-
- Popup avec formulaire de contact
-
- GIF animé qui se déplace
-
- Fond animé avec particules ou étoiles
-
- Navigation claire entre pages
-
+```html
+<img src="src/gif/ton-gif.gif" class="gif-anime" alt="gif animé" />
