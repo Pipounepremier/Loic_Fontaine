@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@plugin "daisyui";
 
 body {
     font-family: Arial, sans-serif;
@@ -52,4 +51,10 @@ ul li {
 
 span {
     color:rgb(0, 0, 0)
+}
+
+.logo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
 }
