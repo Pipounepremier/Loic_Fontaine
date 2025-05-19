@@ -16,76 +16,48 @@
     <a href="index3.html" class="hover:underline">Quizz</a>
     <a href="index4.html" class="hover:underline">Surprise</a>
   </div>
-  <div class="bg-gray-100 rounded-3xl shadow-2xl p-6 w-[320px]">
-    <!-- Écran -->
-    <div id="display" class="bg-white text-right text-3xl font-mono rounded-xl p-4 mb-6 h-20 overflow-hidden shadow-inner">
+  <div class="w-full max-w-md bg-white rounded-[40px] shadow-[0_10px_60px_rgba(0,0,0,0.5)] p-8 space-y-6">
+      <div id="display" class="text-right text-4xl font-mono bg-gray-100 rounded-2xl h-24 p-6 shadow-inner overflow-x-auto">0</div>
+
+      <div class="grid grid-cols-4 gap-4 text-xl font-semibold">
+        <button class="btn bg-red-400 text-white" onclick="clearDisplay()">C</button>
+        <button class="btn bg-yellow-300" onclick="backspace()">⌫</button>
+        <button class="btn bg-indigo-200" onclick="append('%')">%</button>
+        <button class="btn bg-blue-400 text-white" onclick="append('/')">÷</button>
+
+        <button class="btn" onclick="append('7')">7</button>
+        <button class="btn" onclick="append('8')">8</button>
+        <button class="btn" onclick="append('9')">9</button>
+        <button class="btn bg-blue-400 text-white" onclick="append('*')">×</button>
+
+        <button class="btn" onclick="append('4')">4</button>
+        <button class="btn" onclick="append('5')">5</button>
+        <button class="btn" onclick="append('6')">6</button>
+        <button class="btn bg-blue-400 text-white" onclick="append('-')">−</button>
+
+        <button class="btn" onclick="append('1')">1</button>
+        <button class="btn" onclick="append('2')">2</button>
+        <button class="btn" onclick="append('3')">3</button>
+        <button class="btn bg-blue-400 text-white" onclick="append('+')">+</button>
+
+        <button class="btn" onclick="append('(')">(</button>
+        <button class="btn" onclick="append('0')">0</button>
+        <button class="btn" onclick="append(')')">)</button>
+        <button class="btn bg-green-500 text-white col-span-1" onclick="calculate()">=</button>
+
+        <button class="btn col-span-2" onclick="append('.')">.</button>
+        <button class="btn" onclick="append('Math.PI')">π</button>
+        <button class="btn" onclick="append('Math.sqrt(')">√</button>
+      </div>
     </div>
 
-    <!-- Boutons -->
-    <div class="grid grid-cols-4 gap-4 text-lg font-bold">
-      <button class="btn bg-red-400 hover:bg-red-500" onclick="clearDisplay()">C</button>
-      <button class="btn bg-gray-300" onclick="append('/')">/</button>
-      <button class="btn bg-gray-300" onclick="append('*')">×</button>
-      <button class="btn bg-yellow-400 hover:bg-yellow-500" onclick="backspace()">⌫</button>
+    <script src="script.js"></script>
 
-      <button class="btn" onclick="append('7')">7</button>
-      <button class="btn" onclick="append('8')">8</button>
-      <button class="btn" onclick="append('9')">9</button>
-      <button class="btn bg-gray-300" onclick="append('-')">−</button>
-
-      <button class="btn" onclick="append('4')">4</button>
-      <button class="btn" onclick="append('5')">5</button>
-      <button class="btn" onclick="append('6')">6</button>
-      <button class="btn bg-gray-300" onclick="append('+')">+</button>
-
-      <button class="btn" onclick="append('1')">1</button>
-      <button class="btn" onclick="append('2')">2</button>
-      <button class="btn" onclick="append('3')">3</button>
-      <button class="btn row-span-2 bg-blue-500 hover:bg-blue-600 text-white" onclick="calculate()">=</button>
-
-      <button class="btn col-span-2" onclick="append('0')">0</button>
-      <button class="btn" onclick="append('.')">.</button>
-    </div>
-  </div>
-  </div>
-
-  <script>
-    let display = document.getElementById('display');
-
-    function append(char) {
-      if (display.innerText === '0' || display.innerText === 'Erreur') {
-        display.innerText = char;
-      } else {
-        display.innerText += char;
+    <style>
+      .btn {
+        @apply p-5 rounded-2xl bg-gray-200 hover:bg-gray-300 shadow-md hover:scale-105 active:scale-95 transition-all;
       }
-    }
-
-    function clearDisplay() {
-      display.innerText = '0';
-    }
-
-    function backspace() {
-      if (display.innerText.length === 1 || display.innerText === 'Erreur') {
-        display.innerText = '0';
-      } else {
-        display.innerText = display.innerText.slice(0, -1);
-      }
-    }
-
-    function calculate() {
-      try {
-        const result = eval(display.innerText);
-        display.innerText = result;
-      } catch {
-        display.innerText = 'Erreur';
-      }
-    }
-  </script>
-
-  <style>
-    .btn {
-      @apply p-4 bg-white rounded-xl shadow hover:scale-105 active:scale-95 transition-all;
-    }
-  </style>
+    </style>
+  <script src="src/main.js"></script>
 </body>
 </html>
