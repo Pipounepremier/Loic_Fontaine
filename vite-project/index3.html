@@ -4,46 +4,40 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="src/style.css">
     <link rel="stylesheet" href="src/style3.css">
-     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quiz</title>
 </head>
 <body class="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen flex flex-col items-center">
     <div class="sommaire mt-6 mb-10 flex gap-4 text-lg text-white font-semibold">
-  <a href="index.html" class="hover:underline">CV</a>
-  <a href="index2.html" class="text-yellow-400 underline">Calculatrice</a>
-  <a href="index3.html" class="hover:underline">Contactez moi</a>
-  <a href="index4.html" class="hover:underline">Surprise</a>
-</div>
-<div class="bg-white text-gray-800 w-full max-w-xl rounded-2xl shadow-lg p-8 space-y-6">
-    <h1 class="text-3xl font-bold text-center">QUIZZ TAHH LES OUF</h1>
-    <p>Répondez a ce quizz pour pouvoir avoir la chance de me contacter</p>
-    <div id="quiz-container" class="space-y-4">
-      <div id="question" class="text-xl font-medium"></div>
-      <div id="answers" class="grid grid-cols-1 gap-4"></div>
-
-      <button id="next-btn" class="hidden mt-4 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700">Suivant</button>
-
-      <div id="score" class="hidden text-center text-2xl font-semibold"></div>
-
-<div id="quiz-actions" class="hidden flex justify-center gap-4 mt-4">
-  <button id="contact-btn" onclick="window.location.href='index3.html'" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg hidden">
-    Me contacter
-  </button>
-  <button id="retry-btn" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg hidden">
-    Recommencer
-  </button>
-</div>
+        <a href="index.html" class="hover:underline">CV</a>
+        <a href="index2.html" class="text-yellow-400 underline">Calculatrice</a>
+        <a href="index3.html" class="hover:underline">Contactez moi</a>
+        <a href="index4.html" class="hover:underline">Surprise</a>
     </div>
-    <div id="contact-container" class="hidden mt-6 bg-gray-100 p-6 rounded-lg shadow-lg">
-  <h2 class="text-xl font-semibold mb-4">Formulaire de contact</h2>
-  <form id="contact-form" class="space-y-4">
-    <input type="text" name="nom" placeholder="Votre nom" required class="w-full p-2 border rounded-md" />
-    <input type="email" name="email" placeholder="Votre email" required class="w-full p-2 border rounded-md" />
-    <textarea name="message" placeholder="Votre message" required class="w-full p-2 border rounded-md h-24"></textarea>
-    <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Envoyer</button>
-  </form>
-</div>
+
+    <div class="bg-white text-gray-800 w-full max-w-xl rounded-2xl shadow-lg p-8 space-y-6">
+        <h1 class="text-3xl font-bold text-center">QUIZZ TAHH LES OUF</h1>
+        <p>Répondez à ce quizz pour pouvoir avoir la chance de me contacter</p>
+        <div id="quiz-container" class="space-y-4">
+            <div id="question" class="text-xl font-medium"></div>
+            <div id="answers" class="grid grid-cols-1 gap-4"></div>
+
+            <button id="next-btn" class="hidden mt-4 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700">Suivant</button>
+
+            <div id="score" class="hidden text-center text-2xl font-semibold"></div>
+
+            <div id="quiz-actions" class="hidden flex justify-center gap-4 mt-4">
+                <button id="contact-btn" onclick="window.location.href='index5.html'" class="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg hidden">
+                    Me contacter
+                </button>
+                <button id="retry-btn" class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg hidden">
+                    Recommencer
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="src/script.js"></script>
 </body>
 </html>

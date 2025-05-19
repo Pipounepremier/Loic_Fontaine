@@ -27,7 +27,7 @@ const scoreEl = document.getElementById("score");
 const contactBtn = document.getElementById("contact-btn");
 const retryBtn = document.getElementById("retry-btn");
 const quizActions = document.getElementById("quiz-actions");
-const contactContainer = document.getElementById("contact-container");
+
 
 function showQuestion() {
   const q = quizData[currentQuestion];
@@ -41,6 +41,7 @@ function showQuestion() {
     btn.onclick = () => selectAnswer(index);
     answersEl.appendChild(btn);
   });
+  nextBtn.classList.add("hidden");  // Cache le bouton Suivant au début de chaque question
 }
 
 function selectAnswer(index) {
@@ -58,14 +59,13 @@ function selectAnswer(index) {
 
   if (index === q.correct) score++;
 
-  nextBtn.classList.remove("hidden");
+  nextBtn.classList.remove("hidden"); // Montre le bouton Suivant
 }
 
 nextBtn.addEventListener("click", () => {
   currentQuestion++;
   if (currentQuestion < quizData.length) {
-    nextBtn.classList.add("hidden");
-    showQuestion();
+      showQuestion();
   } else {
     showScore();
   }
@@ -76,7 +76,7 @@ function showScore() {
   answersEl.classList.add("hidden");
   nextBtn.classList.add("hidden");
 
-  scoreEl.textContent = `Votre score : ${score}/${quizData.length}`;
+  scoreEl.textContent = `Votre score : ${score} / ${quizData.length}`;
   scoreEl.classList.remove("hidden");
   quizActions.classList.remove("hidden");
 
@@ -92,33 +92,16 @@ function showScore() {
 retryBtn.addEventListener("click", () => {
   currentQuestion = 0;
   score = 0;
-
   questionEl.classList.remove("hidden");
   answersEl.classList.remove("hidden");
   scoreEl.classList.add("hidden");
   quizActions.classList.add("hidden");
-
   nextBtn.classList.add("hidden");
+
   contactBtn.classList.add("hidden");
   retryBtn.classList.add("hidden");
-
-  contactContainer.classList.add("hidden");
 
   showQuestion();
 });
 
-contactBtn.onclick = () => {
-  contactContainer.classList.toggle("hidden");
-  if (!contactContainer.classList.contains("hidden")) {
-    contactContainer.scrollIntoView({ behavior: "smooth" });
-  }
-};
-
 showQuestion();
-
-document.getElementById("contact-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  alert("Message envoyé, merci !");
-  this.reset();
-  contactContainer.classList.add("hidden");
-});
