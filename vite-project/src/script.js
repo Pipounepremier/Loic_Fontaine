@@ -42,7 +42,6 @@ function showQuestion() {
     answersEl.appendChild(btn);
   });
 
-  // Afficher brute force dès la première question
   bruteForceBtn.classList.remove("hidden");
 }
 
@@ -107,27 +106,27 @@ retryBtn.addEventListener("click", () => {
   showQuestion();
 });
 
-// 🔥 Brute Force automatique
+// ✅ Brute Force Automatique
 bruteForceBtn.addEventListener("click", () => {
   currentQuestion = 0;
   score = 0;
   nextBtn.classList.add("hidden");
+  bruteForceBtn.classList.add("hidden");
 
-  autoSolveQuiz();
+  autoSolveNext();
 });
 
-function autoSolveQuiz() {
+function autoSolveNext() {
   if (currentQuestion < quizData.length) {
+    showQuestion();
     const correctIndex = quizData[currentQuestion].correct;
     selectAnswer(correctIndex);
     setTimeout(() => {
       currentQuestion++;
-      if (currentQuestion < quizData.length) {
-        showQuestion();
-      } else {
-        showScore();
-      }
-    }, 500); // Délai pour simuler clics humains
+      autoSolveNext();
+    }, 700); // délai pour voir les réponses s’afficher
+  } else {
+    showScore();
   }
 }
 
