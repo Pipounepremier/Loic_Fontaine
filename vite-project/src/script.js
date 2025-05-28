@@ -26,8 +26,8 @@ const scoreEl = document.getElementById("score");
 
 const contactBtn = document.getElementById("contact-btn");
 const retryBtn = document.getElementById("retry-btn");
+const bruteForceBtn = document.getElementById("bruteforce-btn");
 const quizActions = document.getElementById("quiz-actions");
-
 
 function showQuestion() {
   const q = quizData[currentQuestion];
@@ -41,7 +41,9 @@ function showQuestion() {
     btn.onclick = () => selectAnswer(index);
     answersEl.appendChild(btn);
   });
-  nextBtn.classList.add("hidden");  // Cache le bouton Suivant au début de chaque question
+
+  // Afficher brute force dès la première question
+  bruteForceBtn.classList.remove("hidden");
 }
 
 function selectAnswer(index) {
@@ -59,13 +61,14 @@ function selectAnswer(index) {
 
   if (index === q.correct) score++;
 
-  nextBtn.classList.remove("hidden"); // Montre le bouton Suivant
+  nextBtn.classList.remove("hidden");
 }
 
 nextBtn.addEventListener("click", () => {
   currentQuestion++;
   if (currentQuestion < quizData.length) {
-      showQuestion();
+    nextBtn.classList.add("hidden");
+    showQuestion();
   } else {
     showScore();
   }
@@ -76,7 +79,7 @@ function showScore() {
   answersEl.classList.add("hidden");
   nextBtn.classList.add("hidden");
 
-  scoreEl.textContent = `Votre score : ${score} / ${quizData.length}`;
+  scoreEl.textContent = `Votre score : ${score}/${quizData.length}`;
   scoreEl.classList.remove("hidden");
   quizActions.classList.remove("hidden");
 
@@ -96,12 +99,36 @@ retryBtn.addEventListener("click", () => {
   answersEl.classList.remove("hidden");
   scoreEl.classList.add("hidden");
   quizActions.classList.add("hidden");
-  nextBtn.classList.add("hidden");
 
+  nextBtn.classList.add("hidden");
   contactBtn.classList.add("hidden");
   retryBtn.classList.add("hidden");
 
   showQuestion();
 });
+
+// 🔥 Brute Force automatique
+bruteForceBtn.addEventListener("click", () => {
+  currentQuestion = 0;
+  score = 0;
+  nextBtn.classList.add("hidden");
+
+  autoSolveQuiz();
+});
+
+function autoSolveQuiz() {
+  if (currentQuestion < quizData.length) {
+    const correctIndex = quizData[currentQuestion].correct;
+    selectAnswer(correctIndex);
+    setTimeout(() => {
+      currentQuestion++;
+      if (currentQuestion < quizData.length) {
+        showQuestion();
+      } else {
+        showScore();
+      }
+    }, 500); // Délai pour simuler clics humains
+  }
+}
 
 showQuestion();
