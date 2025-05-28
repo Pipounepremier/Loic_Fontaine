@@ -1,78 +1,96 @@
-# Loic_Fontaine
+# 🌐 Vite Project - Portfolio Interactif avec Quizz
 
-# 🧠 Projet Front-End Interactif
+[![Vite](https://img.shields.io/badge/Vite-4.x-blueviolet?logo=vite)](https://vitejs.dev/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.x-38BDF8?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Status](https://img.shields.io/badge/status-active-success)]()
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+## 🧠 Fonctionnalités principales
+
+- ✅ **Page CV** (`index.html`)
+- 🧮 **Calculatrice interactive** (`index2.html`)
+- 🧩 **Quizz gamifié** (`index4.html`)
+  - Aléatoire, noté et conditionnel
+  - 🔐 Accès au formulaire uniquement après réussite
+  - 💥 Bouton **Brute Force** (auto-réponse via JS)
+- 💬 **Formulaire de contact** (`index5.html`)
+- 🎉 **Page surprise** (`index3.html`)
+- 💅 Interface responsive, moderne avec **Tailwind CSS**
+
+---
 
 ## 📁 Structure du projet
-
-.
-├── index.html # CV
-├── index2.html # Calculatrice avancée
-├── index3.html # Quiz + formulaire de contact
-├── index4.html # Surprise (vidéo/fond animé)
-├── src/
-│ ├── style.css
-│ ├── style2.css # Calculatrice
-│ ├── style3.css # Quiz
-│ ├── script.js # Quiz
-│ └── gif/ # GIFs animés
-
-yaml
-Copy
-Edit
-
----
-
-## 🧾 Pages et Fonctionnalités
-
-### 🧑‍💼 `index.html` – CV interactif
-
-- Menu de navigation stylisé.
-- Fond dégradé (`bg-gradient-to-br from-gray-900 to-gray-800`).
-- Interface épurée avec navigation vers les autres sections.
-
----
-
-### 🔢 `index2.html` – Calculatrice avancée
-
-- UI moderne avec Tailwind CSS.
-- Options incluses :
-  - Addition, soustraction, multiplication, division
-  - Bouton "C" (clear), retour arrière (⌫), point décimal, égal (=)
-- Animations :
-  - Survol : scale, ombre portée
-  - Click : effet de rebond (`active:scale-95`)
-- Fond animé (étoiles ou particules rapides, sans changer la couleur).
-- **GIF animé** se déplaçant de gauche à droite en bas de l’écran.
+```
+vite-project/
+│
+├── public/ 
+├── src/                     # Code source principal
+│   ├── gif/                 # Gifs éventuels utilisés dans tes pages
+│   │   └── *.gif
+│   │
+│   ├── counter.js           # Script Vite par défaut (peut être supprimé si inutile)
+│   ├── javascript.svg       # Ressource SVG pour design
+│   ├── main.js              # Entrée JS Vite (si utilisé)
+│   ├── script.js            # ✅ Script principal du quiz (inclut brute force)
+│   ├── script2.js           # Script secondaire (ex: calculatrice ?)
+│   ├── surprise.js          # Script pour la page "surprise"
+│   ├── style.css            # Style global
+│   ├── style1.css           # Style spécifique à une page (à renommer pour + clarté)
+│   ├── style2.css           # Idem
+│   ├── style3.css           # Style utilisé pour le quiz
+│   ├── surprise.css         # Style spécifique pour la page surprise
+│   └── vite.config.ts       # Configuration Vite (TypeScript)
+│
+├── .gitignore
+├── index.html               # Page principale / CV
+├── index2.html              # Calculatrice
+├── index3.html              # Page "Contactez-moi"
+├── index4.html              # Page surprise
+├── index5.html              # Formulaire de contact (après quiz)
+├── package.json             # Config projet / dépendances
+├── package-lock.json
+└── README.md                # 📘 Documentation du projet
+```
 
 ---
 
-### ❓ `index3.html` – Quiz interactif
+## 🚀 Installation & Lancement
 
-- Questions à choix multiples.
-- Correction immédiate avec feedback visuel :
-  - Vert = bonne réponse
-  - Rouge = mauvaise réponse
-- Score final affiché.
-- Bouton "Contacter quelqu’un" après le score :
-  - Ouvre une **popup modal**
-  - Formulaire avec **nom**, **email**, **message**
-  - Design responsive et épuré
+### Prérequis
 
----
+- Node.js `>= 16`
+- npm ou yarn
 
-### 🎁 `index4.html` – Surprise
+### Installation
 
-- Contient :
-  - Vidéo en plein écran OU
-  - Fond animé avec étoiles rapides / particules
-- Effet visuel immersif
-- Aucun contenu cliquable, ambiance visuelle uniquement
+```bash
+# Cloner
+git clone https://github.com/ton-utilisateur/vite-project.git
+cd vite-project
 
----
+# Installer les dépendances
+npm install
 
-## 🖼️ GIF en bas de l'écran
+# Lancer en dev
+npm run dev
 
-À intégrer dans toutes les pages si besoin :
+```
+# 💡 Quizz + Brute Force
+ - Un quizz intelligent déclenche l'accès au formulaire de contact (index5.html) uniquement si toutes les questions sont justes.
+Un bouton Brute Force simule les bonnes réponses automatiquement.
 
-```html
-<img src="src/gif/ton-gif.gif" class="gif-anime" alt="gif animé" />
+- 👉 Utile pour démontrer des techniques de manipulation du DOM et d’automatisation JS.
+
+# 📦 Stack technique
+- Technologie	Usage
+- Vite	Build ultra rapide
+- TailwindCSS	UI responsive moderne
+- JavaScript	Logique dynamique & brute force
+- HTML/CSS	Structuration et style
+
+# 🧑‍💻 Auteur
+- Projet conçu avec passion pour mettre en valeur des compétences front-end, la gamification, et la logique conditionnelle avancée.
+
+# 📄 Licence
+- Ce projet est sous licence MIT — libre d’usage à but personnel ou éducatif.
