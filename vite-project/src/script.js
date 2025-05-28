@@ -23,11 +23,10 @@ const questionEl = document.getElementById("question");
 const answersEl = document.getElementById("answers");
 const nextBtn = document.getElementById("next-btn");
 const scoreEl = document.getElementById("score");
-
 const contactBtn = document.getElementById("contact-btn");
 const retryBtn = document.getElementById("retry-btn");
-const bruteForceBtn = document.getElementById("bruteforce-btn");
 const quizActions = document.getElementById("quiz-actions");
+const bruteForceBtn = document.getElementById("bruteforce-btn");
 
 function showQuestion() {
   const q = quizData[currentQuestion];
@@ -42,6 +41,7 @@ function showQuestion() {
     answersEl.appendChild(btn);
   });
 
+  // Affiche le bouton brute force à la première question
   bruteForceBtn.classList.remove("hidden");
 }
 
@@ -82,6 +82,9 @@ function showScore() {
   scoreEl.classList.remove("hidden");
   quizActions.classList.remove("hidden");
 
+  // Cacher le bouton brute force après le quiz
+  bruteForceBtn.classList.add("hidden");
+
   if (score === quizData.length) {
     contactBtn.classList.remove("hidden");
     retryBtn.classList.add("hidden");
@@ -94,11 +97,11 @@ function showScore() {
 retryBtn.addEventListener("click", () => {
   currentQuestion = 0;
   score = 0;
+
   questionEl.classList.remove("hidden");
   answersEl.classList.remove("hidden");
   scoreEl.classList.add("hidden");
   quizActions.classList.add("hidden");
-
   nextBtn.classList.add("hidden");
   contactBtn.classList.add("hidden");
   retryBtn.classList.add("hidden");
@@ -106,28 +109,23 @@ retryBtn.addEventListener("click", () => {
   showQuestion();
 });
 
-// ✅ Brute Force Automatique
+// Brute force automatique
 bruteForceBtn.addEventListener("click", () => {
-  currentQuestion = 0;
-  score = 0;
-  nextBtn.classList.add("hidden");
-  bruteForceBtn.classList.add("hidden");
-
-  autoSolveNext();
-});
-
-function autoSolveNext() {
-  if (currentQuestion < quizData.length) {
-    showQuestion();
-    const correctIndex = quizData[currentQuestion].correct;
-    selectAnswer(correctIndex);
+  function autoAnswer() {
+    const q = quizData[currentQuestion];
+    selectAnswer(q.correct);
     setTimeout(() => {
       currentQuestion++;
-      autoSolveNext();
-    }, 700); // délai pour voir les réponses s’afficher
-  } else {
-    showScore();
+      if (currentQuestion < quizData.length) {
+        showQuestion();
+        autoAnswer();
+      } else {
+        showScore();
+      }
+    }, 500);
   }
-}
+
+  autoAnswer();
+});
 
 showQuestion();
